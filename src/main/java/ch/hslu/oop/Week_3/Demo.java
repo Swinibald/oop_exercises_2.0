@@ -60,4 +60,76 @@ public class Demo {
             return a;
         }
     }
+
+    public void itFor(){
+        for (int i = 0; i < 10 ; i++) {
+            System.out.println(i+1);
+        }
+    }
+
+    public void itDoWhile(){
+        int i = 0;
+        do {
+            System.out.println(i+1);
+            i++;
+        } while (i<10);
+    }
+
+    public void itWhile(){
+        int i = 0;
+        while (i<10) {
+            System.out.println(i+1);
+            i++;
+        }
+    }
+
+    public void whileLoop(){
+        Float value = 0.9f;
+        int i = 0;
+        while (value <= 1.0) {
+            System.out.println(value);
+            value += 0.000025f;
+            i++;
+        }
+        ;
+    }
+
+    public void forLoop(){
+        int roundC = 0;
+        Float value = 0.9f;
+        for (int i = 0; i < 4000 ; i++) {
+            System.out.println(value);
+            value += 0.000025f; 
+            roundC++;         
+        }
+        System.out.println(roundC);
+    }
+
+    public void printBox(final int width, final int height){
+        String topBot = "";
+        String middle = "# ";
+        int middleRow = height - 2;
+        for (int i = 0; i < width; i++) {
+            topBot += "#";
+        }
+        System.out.println(topBot);
+        for (int i = 0; i < middleRow; i++){
+            middle += "  ";
+        }
+        middle += " #";
+        for (int i = 0; i < height; i++){
+            System.out.println(middle);
+        }
+        System.out.println(topBot);
+
+    }
+    public static void main(String[] args) {
+        Demo demo = new Demo(0);
+        //demo.itFor();
+        //demo.itDoWhile();
+        //demo.whileLoop();
+        //demo.forLoop();
+        demo.printBox(10, 5);
+
+    }
 }
