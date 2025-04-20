@@ -4,9 +4,9 @@ import ch.hslu.oop.Week_4.Motor;
 public class Vehicle implements Switchable{
 
     private boolean isRunningVehicle = false;
-
+    Motor motor1 = new Motor(); 
     public Vehicle (){
-    Motor motor = new Motor();  
+        
     }
 
     @Override
@@ -15,7 +15,7 @@ public class Vehicle implements Switchable{
             System.out.println("Vehicle already on.");
         }else{
             isRunningVehicle = true;
-            Motor.switchOn();
+            motor1.switchOn();
             System.out.println("Vehicle turned on.");
         }
     }
@@ -26,7 +26,7 @@ public class Vehicle implements Switchable{
             System.out.println("Vehicle already off.");
         }else{
             isRunningVehicle = false;
-            Motor.switchOff();
+            motor1.switchOff();
             System.out.println("Vehicle turned off.");
         }
     }

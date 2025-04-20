@@ -2,7 +2,7 @@ package ch.hslu.oop.Week_4;
 
 public class Motor implements Switchable {
 
-    private boolean isRunning = false;
+    private static boolean isRunning = false;
     private int rpm = 0;
 
     @Override
