@@ -1,4 +1,4 @@
-package ch.hslu.oop.Week_5;
+package ch.hslu.oop.Week_6;
 
 public class Circle  extends Shape{
     private int radius;

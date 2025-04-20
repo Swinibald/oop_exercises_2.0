@@ -1,5 +1,5 @@
 package ch.hslu.oop.Week_4;
-import ch.hslu.oop.Week_4.Motor;
+
 
 public class Vehicle implements Switchable{
 
