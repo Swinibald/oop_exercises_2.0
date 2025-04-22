@@ -1,10 +1,7 @@
 package ch.hslu.oop.Week_5;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import org.junit.jupiter.api.Test;
-
-import ch.hslu.oop.Week_4.Motor;
 
 public class CountingSwitchableTest {
     @Test
