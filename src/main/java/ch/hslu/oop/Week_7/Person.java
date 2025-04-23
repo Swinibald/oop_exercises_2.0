@@ -1,8 +1,9 @@
 package ch.hslu.oop.Week_7;
 
+import java.util.Comparator;
 import java.util.Objects;
 
-public class Person {
+public class Person implements Comparable<Person>, Comparator<Person>{
     final long id;
     String nickname;
     String name;
@@ -58,8 +59,27 @@ public class Person {
     public int hashCode(){
         return Objects.hash(this.id);
     }
+
+    @Override
+    public int compareTo(Person p){
+        if (this.id == p.id) {
+            return 0;
+        }else if (this.id > p.id) {
+            return 1;
+        }else{
+            return -1;
+        }
+    }
     public static void main(String[] args) {
         Person person = new Person(0, "Sven", "Swini");
         System.out.println(person.toString());
+    }
+
+    @Override
+    public int compare(Person o1, Person o2) {
+        if ) {
+            
+        }
+        
     }
 }
