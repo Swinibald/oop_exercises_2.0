@@ -51,8 +51,10 @@ public class PersonTest {
         assertFalse(person1.hashCode() == person2.hashCode());
     }
     @Test
-    void testGetId() {
-
+    void testCompare() {
+        Person person1 = new Person(0, "Sven", "Swini");
+        Person person2 = new Person(0, "Sven", "Swini");
+        assertEquals(-1, person1.compare(person1, person2));
     }
 
     @Test

@@ -106,16 +106,13 @@ public class Temperature implements Comparable<Temperature>{
     }
 
     @Override
-    public int compareTo(Object o) {
-        if (this.getCelsius() == ((Temperature)o).getCelsius()) {
+    public int compareTo(Temperature t) {
+        if (this.getCelsius() == t.getCelsius()) {
             return 0;
-        }else if (this.getCelsius() < ((Temperature)o).getCelsius()) {
+        }else if (this.getCelsius() < t.getCelsius()) {
             return -1;
         }else {
             return 0;
         }
     }
-
-
-
 }
