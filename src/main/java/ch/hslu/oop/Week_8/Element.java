@@ -1,4 +1,4 @@
-package ch.hslu.oop.Week_6;
+package ch.hslu.oop.Week_8;
 
 import ch.hslu.oop.Week_2.Temperature;
 
