@@ -35,4 +35,12 @@ public class TemperaturVerlauf {
         }
         return maxTemp;
     }
+
+    public double getAverage(){
+        double sum = 0.0;
+        for (Temperature temp : temperaturen) {
+            sum =+ temp.getCelsius();
+        }
+        return sum/getCount();
+    }
 }
