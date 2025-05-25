@@ -41,7 +41,7 @@ public class Motor implements Switchable {
             isRunning = true;
             rpm = 600;
             log.info("Engine turned on.");
-            final PropertyChangeEvent pcEvent = new PropertyChangeEvent(this, "state", MotorState.OFF, MotorState.ON);
+            final PropertyChangeEvent pcEvent = new PropertyChangeEvent(this, "state", MotorState.Off, MotorState.On);
             this.firePropertyChangeEvent(pcEvent);
         }
     }
@@ -64,6 +64,8 @@ public class Motor implements Switchable {
             isRunning = false;
             rpm = 0;
             log.info("Engine turned off.");
+            final PropertyChangeEvent pcEvent = new PropertyChangeEvent(this, "state", MotorState.On, MotorState.Off);
+            this.firePropertyChangeEvent(pcEvent);
         }
     }
 

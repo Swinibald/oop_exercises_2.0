@@ -3,13 +3,18 @@ package ch.hslu.oop.Week_10;
 import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
 
-public class Vehicle implements Switchable{
+import java.awt.Taskbar.State;
+import java.beans.PropertyChangeEvent;
+
+public class Vehicle implements Switchable, PropertyChangeListener{
 
     boolean isRunningVehicle = false;
-    Motor motor1 = new Motor(); 
     private static Logger log = LoggerFactory.getLogger(Vehicle.class);
+    private Motor motor;
+   
     public Vehicle (){
-    
+        this.motor = new Motor();
+        this.motor.addPropertyChangeListener((java.beans.PropertyChangeListener) this);
     }
 
     @Override
@@ -42,6 +47,21 @@ public class Vehicle implements Switchable{
     @Override
     public boolean isSwitchedOff() {
         return !isRunningVehicle;
+    }
+
+    public void handleMotorEvent(String source, PropertyChangeEvent event){
+        if (event.getNewValue() == MotorState.Off && isSwitchedOn() == true) {
+            log.info("Warning Motor off while Vehicle still running!");
+        }else if (event.getNewValue() == MotorState.On && event.getOldValue() == MotorState.Off && isSwitchedOff() == true) {
+            log.info("Motor on while vehicle Off!");
+        }
+    }
+
+    @Override
+    public void PropertyChangeEvent(final PropertyChangeEvent event) {
+        if (event.getSource()== this.motor){
+            this.handleMotorEvent("Motor", event);
+        }         
     }
 
 }
