@@ -37,6 +37,5 @@ public class VehicleTest {
     void testSwitchOn() {
         car.switchOn();
         assertTrue(car.isRunningVehicle);
-
     }
 }

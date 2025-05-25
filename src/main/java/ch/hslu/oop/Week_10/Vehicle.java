@@ -2,8 +2,7 @@ package ch.hslu.oop.Week_10;
 
 import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
-
-import java.awt.Taskbar.State;
+import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeEvent;
 
 public class Vehicle implements Switchable, PropertyChangeListener{
@@ -14,7 +13,7 @@ public class Vehicle implements Switchable, PropertyChangeListener{
    
     public Vehicle (){
         this.motor = new Motor();
-        this.motor.addPropertyChangeListener((java.beans.PropertyChangeListener) this);
+        this.motor.addPropertyChangeListener(this);
     }
 
     @Override
@@ -23,7 +22,7 @@ public class Vehicle implements Switchable, PropertyChangeListener{
             log.info("Vehicle already on.");
         }else{
             isRunningVehicle = true;
-            motor1.switchOn();
+            motor.switchOn();
             log.info("Vehicle turned on.");
         }
     }
@@ -34,7 +33,7 @@ public class Vehicle implements Switchable, PropertyChangeListener{
             log.info("Vehicle already off.");
         }else{
             isRunningVehicle = false;
-            motor1.switchOff();
+            motor.switchOff();
             log.info("Vehicle turned off.");
         }
     }
@@ -58,10 +57,18 @@ public class Vehicle implements Switchable, PropertyChangeListener{
     }
 
     @Override
-    public void PropertyChangeEvent(final PropertyChangeEvent event) {
+    public void propertyChange(final PropertyChangeEvent event) {
         if (event.getSource()== this.motor){
             this.handleMotorEvent("Motor", event);
         }         
     }
+    public static void main(String[] args) {
+        Vehicle car = new Vehicle();
+        car.motor.switchOn();
+        car.switchOn();
+        car.motor.switchOff();
+    }
+
+
 
 }
