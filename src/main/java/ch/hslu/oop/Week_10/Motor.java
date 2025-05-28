@@ -22,7 +22,9 @@ public class Motor implements Switchable {
     * @param listener PropertyChangeListener.
     */
     public void addPropertyChangeListener(final PropertyChangeListener listener) {
-        this.changeListeners.add(listener);
+        if (listener != null) {
+           this.changeListeners.add(listener); 
+        }
     }
 
     /**
@@ -30,7 +32,9 @@ public class Motor implements Switchable {
     * @param listener PropertyChangeListener.
     */
     public void removePropertyChangeListener(final PropertyChangeListener listener) {
-        this.changeListeners.remove(listener);
+         if (listener != null) {
+            this.changeListeners.remove(listener);
+        }
     }
 
     @Override
