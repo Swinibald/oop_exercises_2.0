@@ -45,31 +45,6 @@ public final class Temperature implements Comparable<Temperature>{
         return fahrenheit;
     }
 
-    public void setCelsius(double newCelsius) {
-        this.celsius = newCelsius;
-    }
-
-    public void setKelvin(double newKelvin){
-        this.celsius = kelvinToCel(newKelvin);
-    }
-    
-    public void setFahrenheit(double newFahrenheit){
-        this.celsius = fahrenheitToCel(newFahrenheit);
-    }
-
-    public void adjustCelsius(double adjust){
-        this.celsius = celsius + adjust;
-    }
-
-    public void adjustKelvin(double adjust){
-        this.kelvin = getCelsius() + adjust;
-        setCelsius(kelvin);
-    }
-
-    public void adjustFahrenheit(double adjust){
-        this.celsius += adjust * 5.0 / 9.0;
-    }
-
     @Override 
     public boolean equals(Object obj){
         if (this == obj) {

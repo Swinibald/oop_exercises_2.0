@@ -26,7 +26,7 @@ public class TemperaturVerlauf {
         int i = 0;
         Temperature maxTemp = temperaturen.get(0);
         while (i < getCount()) {
-            if (-1 == maxTemp.compareTo(temperaturen.get(i+1))) {
+            if (-1 == maxTemp.compareTo(temperaturen.get(i))) {
                 maxTemp = temperaturen.get(i+1);
                 i++;
             }else{ 
@@ -36,11 +36,30 @@ public class TemperaturVerlauf {
         return maxTemp;
     }
 
+    public Temperature getMin(){
+        Temperature minTemp = temperaturen.get(0);
+        for (Temperature temp : temperaturen) {
+            if (temp.compareTo(minTemp) == -1) {
+                minTemp = temp;
+            }
+        }
+        return minTemp;
+    }
+
     public double getAverage(){
         double sum = 0.0;
         for (Temperature temp : temperaturen) {
             sum =+ temp.getCelsius();
         }
         return sum/getCount();
+    }
+
+    @Override
+    public String toString(){
+        if (temperaturen.equals(null)){
+            return "Temperaturliste ist leer!";
+        }else{
+            return String.valueOf("Anzahl Temperaturen: " + getCount() + "Höchsttemperatur: " + getMax() + "Tiefsttemperatur: "+ getMin() + "Durchschnittstemperatur: " + getAverage());
+        }
     }
 }
