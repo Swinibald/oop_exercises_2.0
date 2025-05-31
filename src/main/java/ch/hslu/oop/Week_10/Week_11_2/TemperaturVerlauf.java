@@ -1,65 +1,109 @@
 package ch.hslu.oop.Week_10.Week_11_2;
 
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
+import java.util.List;
 
-public class TemperaturVerlauf {
+import ch.hslu.oop.Week_10.Week_11_2.TemperaturEvent.Typ;
 
-    ArrayList<Temperature> temperaturen = new ArrayList<>();
-    
-    public TemperaturVerlauf(){
+public class TemperaturVerlauf{
+    private final ArrayList<Temperature> temperaturen = new ArrayList<>();
 
+    Temperature oldMax;
+    Temperature oldMin;
+    Temperature newMax;
+    Temperature newMin;
+
+    private final List<TemperaturEventListener> listeners = new ArrayList<>();
+
+    public void addTemperaturEventListener(TemperaturEventListener listener) {
+        listeners.add(listener);
     }
 
-    public void add(Temperature temp){
+    public void removeTemperaturEventListener(TemperaturEventListener listener) {
+        listeners.remove(listener);
+    }
+
+    private void fireTemperaturEvent(TemperaturEvent event) {
+        for (TemperaturEventListener listener : listeners) {
+            listener.temperaturChanged(event);
+        }
+    }
+
+
+
+    public void add(Temperature temp) {
         temperaturen.add(temp);
     }
 
-    public void clear(){
+    public void clear() {
         temperaturen.clear();
     }
 
-    public int getCount(){
+    public int getCount() {
         return temperaturen.size();
     }
 
-    public Temperature getMax(){
-        int i = 0;
-        Temperature maxTemp = temperaturen.get(0);
-        while (i < getCount()) {
-            if (-1 == maxTemp.compareTo(temperaturen.get(i))) {
-                maxTemp = temperaturen.get(i+1);
-                i++;
-            }else{ 
-                i++;
-            }
+    public Temperature getMax() {
+    if (temperaturen.isEmpty()) return null;
+
+    Temperature maxTemp = temperaturen.get(0);
+    for (Temperature temp : temperaturen) {
+        if (temp.compareTo(maxTemp) > 0) {
+            maxTemp = temp;
         }
-        return maxTemp;
     }
 
-    public Temperature getMin(){
-        Temperature minTemp = temperaturen.get(0);
-        for (Temperature temp : temperaturen) {
-            if (temp.compareTo(minTemp) == -1) {
-                minTemp = temp;
-            }
-        }
-        return minTemp;
+    if (oldMax == null || !oldMax.equals(maxTemp)) {
+        TemperaturEvent pcEvent = new TemperaturEvent(this, Typ.MAXIMUM, oldMax, maxTemp);
+        fireTemperaturEvent(pcEvent);
+        oldMax = maxTemp;
     }
 
-    public double getAverage(){
+    return maxTemp;
+}
+
+
+    public Temperature getMin() {
+    if (temperaturen.isEmpty()) return null;
+
+    Temperature minTemp = temperaturen.get(0);
+    for (Temperature temp : temperaturen) {
+        if (temp.compareTo(minTemp) < 0) {
+            minTemp = temp;
+        }
+    }
+
+    if (oldMin == null || !oldMin.equals(minTemp)) {
+        TemperaturEvent pcEvent = new TemperaturEvent(this, Typ.MINIMUM, oldMin, minTemp);
+        fireTemperaturEvent(pcEvent);
+        oldMin = minTemp;
+    }
+
+    return minTemp;
+}
+
+    public double getAverage() {
+        if (temperaturen.isEmpty()) return 0.0;
         double sum = 0.0;
         for (Temperature temp : temperaturen) {
-            sum =+ temp.getCelsius();
+            sum += temp.getCelsius();
         }
-        return sum/getCount();
+        return sum / getCount();
     }
 
     @Override
-    public String toString(){
-        if (temperaturen.equals(null)){
+    public String toString() {
+        if (temperaturen.isEmpty()) {
             return "Temperaturliste ist leer!";
-        }else{
-            return String.valueOf("Anzahl Temperaturen: " + getCount() + "Höchsttemperatur: " + getMax() + "Tiefsttemperatur: "+ getMin() + "Durchschnittstemperatur: " + getAverage());
         }
+        return String.format(
+            "Anzahl Temperaturen: %d\nHöchsttemperatur: %s\nTiefsttemperatur: %s\nDurchschnittstemperatur: %.2f °C",
+            getCount(),
+            getMax(),
+            getMin(),
+            getAverage()
+        );
     }
 }
