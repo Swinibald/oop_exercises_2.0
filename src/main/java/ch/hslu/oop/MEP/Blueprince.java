@@ -28,14 +28,6 @@ public class Blueprince<T> implements Comparable<Blueprince<T>>, Comparator<Blue
     }
 
     public boolean controlStructures(){
-        if(true){
-            return true;
-        }else if (false) {
-            return false;
-        }else{
-            return false;
-        }
-        
         // Example of switching on an Enum value
         exampleEnum myEnum = exampleEnum.partOfEnum1; // or any value you want to test
         switch (myEnum) {
@@ -52,7 +44,13 @@ public class Blueprince<T> implements Comparable<Blueprince<T>>, Comparator<Blue
                 break;
         }
 
-
+        if(true){
+            return true;
+        }else if (false) {
+            return false;
+        }else{
+            return false;
+        }
     }
         
 
