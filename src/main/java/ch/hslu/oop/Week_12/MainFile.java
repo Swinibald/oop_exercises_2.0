@@ -8,6 +8,5 @@ public class MainFile {
         System.out.println("Min Temperatur: " + tempReader.tempV.getMin().toString());
         System.out.println("Zeitpunkt der Max Temperatur: " + tempReader.tempV.getMin().getLocalDateTime().toString());
         System.out.println("Zeitpunkt der Min Temperatur: " + tempReader.tempV.getMax().getLocalDateTime().toString());
-
     }
 }
