@@ -1,4 +1,4 @@
-package ch.hslu.oop.Week_12;
+/**package ch.hslu.oop.Week_12;
 
 import java.util.Scanner;
 import org.slf4j.Logger;
@@ -48,3 +48,4 @@ public class Main implements TemperaturEventListener {
         event.getTyp(), event.getAlt(), event.getNeu());
     }
 }
+*/

@@ -1,5 +1,7 @@
 package ch.hslu.oop.Week_12;
 
+import java.time.LocalDateTime;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -7,24 +9,30 @@ public final class Temperature implements Comparable<Temperature> {
     private final double celsius;
     private static final double kelvinOffset = 273.15;
     private static final Logger log = LoggerFactory.getLogger(Temperature.class);
+    private LocalDateTime dateTime;
 
-    private Temperature(double celsius) {
+    Temperature(double celsius, LocalDateTime dateTime) {
+        this.dateTime = dateTime;
         if (celsius < -273.15) {
             throw new IllegalArgumentException("Temperatur unter dem absoluten Nullpunkt!");
         }
         this.celsius = celsius;
     }
 
-    public static Temperature createFromCelsius(final double celsius) {
+    /**public static Temperature createFromCelsius(final double celsius) {
         return new Temperature(celsius);
     }
 
     public static Temperature createFromKelvin(final double kelvin) {
         return new Temperature(kelvinToCelsius(kelvin));
-    }
+    }*/
 
     public double getCelsius() {
         return celsius;
+    }
+
+    public LocalDateTime getLocalDateTime(){
+        return dateTime;
     }
 
     public double getKelvin() {
