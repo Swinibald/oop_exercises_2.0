@@ -5,7 +5,15 @@ import java.util.Comparator;
 
 public class Blueprince<T> implements Comparable<Blueprince<T>>, Comparator<Blueprince<T>>{
 
-    private int index = 0;
+    private int index = 0;\
+
+    //Dataencasulation (whenever possible private)
+    private //only avaliable for the class itself
+    package //avaliable for every class in the pakage (folder)
+    protected //same as package but also avaliable for every specialisation of classes in packages
+    public; //avaliable for everyone
+    final //values can only be set once and arent changeable after
+    static //part of the class but not bound to a specific instance of the class
 
     private String string = "String"; //String of characters
     private int number = 01234; //Full number.
@@ -27,7 +35,7 @@ public class Blueprince<T> implements Comparable<Blueprince<T>>, Comparator<Blue
         }
     }
 
-    public boolean controlStructures(){
+    public boolean controlStructures(int value){
         // Example of switching on an Enum value
         exampleEnum myEnum = exampleEnum.partOfEnum1; // or any value you want to test
         switch (myEnum) {
@@ -41,6 +49,18 @@ public class Blueprince<T> implements Comparable<Blueprince<T>>, Comparator<Blue
                 // handle partOfEnum3
                 break;
             default:
+                break;
+        }
+
+        switch (value) {
+            case 1:
+                
+                break;
+            case 2:
+
+                break;
+            default:
+
                 break;
         }
 
@@ -115,5 +135,24 @@ public class Blueprince<T> implements Comparable<Blueprince<T>>, Comparator<Blue
     @Override
     public String toString(){
         return "Blueprince " + index;
+        try {
+            throw IllegalArgumentException e;
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
     }
+
+    //Exceptionhandling
+    try {
+            //do something that could throw an exception
+    } catch (Exception e) {//define which exception gets handled
+            //handles exception, ussually a logging output to inform user of error
+    }
+
+    throw Exception e; //Throws Exception e, you can choose a specific exception to trigger a catch
+
+    //Eventhandling
+
+    //Sender Class
+
 }
