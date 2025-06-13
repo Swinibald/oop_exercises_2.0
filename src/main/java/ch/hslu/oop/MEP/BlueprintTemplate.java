@@ -409,7 +409,7 @@ public class BlueprintTemplate<T> implements Comparable<BlueprintTemplate<T>>, C
         myBlueprint.exampleLogging();
         myBlueprint.streamApiExample();
         myBlueprint.lambdaExpressionExample();
-
+        System.out.println(1%7);
         // Ein Event auslösen und empfangen (da diese Klasse PropertyChangeListener ist)
         myBlueprint.fireExamplePropertyChangeEvent("index", 0, 10);
 
