@@ -1,27 +1,49 @@
 package ch.hslu.oop.MEP;
 
-import java.util.Objects;
-
 public class Raum {
     private final int raumnummer;
     private final int kapazität;
+    private Status raumStatus;
+
+
 
     public Raum (int raumnummer, int kapazität){
-        if (raumnummer < 1000 && raumnummer > 0 && kapazität > 9) {
+        if (raumnummer < 1000 && raumnummer >= 100 && kapazität > 2) {
             this.kapazität = kapazität;
             this.raumnummer = raumnummer;
+            this.raumStatus = Status.frei;
         }else{
             throw new IllegalArgumentException("Raum Kapazitat zu klein oder Raumnummer ungultig");
-        }
-            
+        }   
     }
 
+    public enum Status {
+        frei,
+        belegt,
+        gesperrt;
+    }
     public int getRaumnummer() {
         return raumnummer;
     }
 
     public int getKapazität() {
         return kapazität;
+    }
+
+    public Status getRaumStatus() {
+        return raumStatus;
+    }
+
+    protected void setRaumStatus(Status stat){
+        this.raumStatus = stat;
+    }
+
+    public boolean isFree(){
+        if (raumStatus == Status.frei) {
+            return true;
+        }else{
+            return false;
+        }
     }
 
     @Override
@@ -40,6 +62,8 @@ public class Raum {
         return raumnummer == other.raumnummer; // Vergleich der relevanten Felder
     }
 
-  
-
+    @Override 
+    public String toString(){
+        return "Raumnummer: " + getRaumnummer() + "Kapazität: "+ getKapazität() + "Status: " + getRaumStatus();
+    }
 }
